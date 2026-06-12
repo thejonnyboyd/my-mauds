@@ -1,0 +1,314 @@
+[
+  {
+    "id": 1,
+    "name": "Beansy's Crossmaglen",
+    "address": "6 Cardinal O'Fiaich Square, Crossmaglen, BT35",
+    "lat": 54.0766535,
+    "lng": -6.6079257,
+    "town": "Crossmaglen"
+  },
+  {
+    "id": 2,
+    "name": "Cafe Maud's Ballyhackamore",
+    "address": "310-322 Upper Newtownards Road, Belfast, BT4 3EX",
+    "lat": 54.5954326,
+    "lng": -5.870266,
+    "town": "Belfast"
+  },
+  {
+    "id": 3,
+    "name": "Cafe Maud's Lisburn Road",
+    "address": "555 Lisburn Road, Belfast, BT9 7GQ",
+    "lat": 54.5769501,
+    "lng": -5.9533916,
+    "town": "Belfast"
+  },
+  {
+    "id": 4,
+    "name": "Coastal Coffee",
+    "address": "12 Victoria Avenue, Whitehead, BT38 9QF",
+    "lat": 54.75226,
+    "lng": -5.7105104,
+    "town": "Belfast"
+  },
+  {
+    "id": 5,
+    "name": "Heaps of Treats Kirkcubbin",
+    "address": "3-5 Main Street, Kirkcubbin, BT22 2SQ",
+    "lat": 54.48713,
+    "lng": -5.53274,
+    "town": "Kirkcubbin"
+  },
+  {
+    "id": 6,
+    "name": "Juliano's Ballymena",
+    "address": "26-28 Broughshane Street, Ballymena, BT43 6EB",
+    "lat": 54.86709,
+    "lng": -6.27369,
+    "town": "Ballymena"
+  },
+  {
+    "id": 7,
+    "name": "Mauds @ Caffe 3 Ballyclare",
+    "address": "3 Granges Street, Ballyclare, BT39 9ZJ",
+    "lat": 54.75292,
+    "lng": -6.00001,
+    "town": "Ballyclare"
+  },
+  {
+    "id": 8,
+    "name": "Mauds @ cHILL Cavehill",
+    "address": "311 Cavehill Road, Belfast, BT15 5EY",
+    "lat": 54.63262,
+    "lng": -5.947477,
+    "town": "Belfast"
+  },
+  {
+    "id": 9,
+    "name": "Mauds @ Scoops Ballygowan",
+    "address": "The Square, Ballygowan, BT23 6HX",
+    "lat": 54.502221,
+    "lng": -5.792251,
+    "town": "Ballygowan"
+  },
+  {
+    "id": 10,
+    "name": "Mauds Ballycastle",
+    "address": "1 Bayview Road, Ballycastle, BT54 6BT",
+    "lat": 55.206129,
+    "lng": -6.240712,
+    "town": "Ballycastle"
+  },
+  {
+    "id": 11,
+    "name": "Mauds Ballygomartin",
+    "address": "67 Ballygomartin Road, Belfast, BT13 3LB",
+    "lat": 54.60975,
+    "lng": -5.96834,
+    "town": "Belfast"
+  },
+  {
+    "id": 12,
+    "name": "Mauds Ballywalter",
+    "address": "58 Main Street, Ballywalter, BT22 2PQ",
+    "lat": 54.54363,
+    "lng": -5.48511,
+    "town": "Ballywalter"
+  },
+  {
+    "id": 13,
+    "name": "Mauds Bangor",
+    "address": "57 High St, Bangor BT20 5BE",
+    "lat": 54.66358,
+    "lng": -5.66481,
+    "town": "Bangor"
+  },
+  {
+    "id": 14,
+    "name": "Mauds Bushmills",
+    "address": "51 Whitepark Road, Bushmills, BT57 8QA",
+    "lat": 55.22796,
+    "lng": -6.40356,
+    "town": "Bushmills"
+  },
+  {
+    "id": 15,
+    "name": "Mauds Carnlough",
+    "address": "Harbour Road, Carnlough, County Antrim",
+    "lat": 54.99243,
+    "lng": -5.99044,
+    "town": "Carnlough"
+  },
+  {
+    "id": 16,
+    "name": "Mauds Comber",
+    "address": "6 Bridge Street Link, Comber, BT23 5YH",
+    "lat": 54.55107,
+    "lng": -5.74428,
+    "town": "Comber"
+  },
+  {
+    "id": 17,
+    "name": "Mauds Donaghadee",
+    "address": "18 High Street, Donaghadee, BT21 0AA",
+    "lat": 54.64214,
+    "lng": -5.53685,
+    "town": "Donaghdee"
+  },
+  {
+    "id": 18,
+    "name": "Mauds Enniskillen",
+    "address": "26 Shore Road, Enniskillen, BT74 4EF",
+    "lat": 54.34370,
+    "lng": -7.63697,
+    "town": "Enniskillen"
+  },
+  {
+    "id": 19,
+    "name": "Mauds Fortfield",
+    "address": "75 Shore Road, Carrickfergus, BT38 8FF",
+    "lat": 54.69535,
+    "lng": -5.85703,
+    "town": "Carrickfergus"
+  },
+  {
+    "id": 20,
+    "name": "Mauds Holywood",
+    "address": "109 High St, Holywood BT18 9AG",
+    "lat": 54.64067,
+    "lng": -5.83627,
+    "town": "Holywood"
+  },
+  {
+    "id": 21,
+    "name": "Mauds Kilkeel",
+    "address": "13 Greencastle Street, Kilkeel, BT34 4BH",
+    "lat": 54.06264,
+    "lng": -6.00710,
+    "town": "Kilkeel"
+  },
+  {
+    "id": 22,
+    "name": "Mauds Larne",
+    "address": "79 Main Street, Larne, BT40 1HH",
+    "lat": 54.85152,
+    "lng": -5.81643,
+    "town": "Larne"
+  },
+  {
+    "id": 23,
+    "name": "Mauds Monkstown",
+    "address": "12 Monkstown Rd, Newtownabbey, BT37 0HS",
+    "lat": 54.68451,
+    "lng": -5.91991,
+    "town": "Newtownabbey"
+  },
+  {
+    "id": 24,
+    "name": "Mauds Newcastle",
+    "address": "106 Main Street, Newcastle, BT33 0AE",
+    "lat": 54.21083,
+    "lng": -5.89004,
+    "town": "Newcastle"
+  },
+  {
+    "id": 25,
+    "name": "Mauds Newry",
+    "address": "2 Warrenpoint Road, Newry, BT34 2PF",
+    "lat": 54.16708,
+    "lng": -6.33307,
+    "town": "Newry"
+  },
+  {
+    "id": 26,
+    "name": "Mauds Newtownards",
+    "address": "44a High Street, Newtownards, BT23 7HZ",
+    "lat": 54.59287,
+    "lng": -5.69425,
+    "town": "Newtownards"
+  },
+  {
+    "id": 27,
+    "name": "Mauds Ormeau",
+    "address": "260 Ormeau Road, Belfast, BT7 2GB",
+    "lat": 54.57761,
+    "lng": -5.91830,
+    "town": "Belfast"
+  },
+  {
+    "id": 28,
+    "name": "Mauds Portrush",
+    "address": "45-47 Eglinton Street, Portrush, BT56 8DX",
+    "lat": 55.20417,
+    "lng": -6.65215,
+    "town": "Portrush"
+  },
+  {
+    "id": 29,
+    "name": "Mauds Portstewert",
+    "address": "73 The Promenade, Portstewart, BT55 7AF",
+    "lat": 55.18363,
+    "lng": -6.71827,
+    "town": "Portstewert"
+  },
+  {
+    "id": 30,
+    "name": "Mauds Scotch Quarter",
+    "address": "52 Scotch Quarter, Carrickfergus, BT38 7DP",
+    "lat": 54.71825,
+    "lng": -5.79885,
+    "town": "Carrickfergus"
+  },
+  {
+    "id": 31,
+    "name": "Mauds Templepatrick",
+    "address": "954 Antrim Road, Templepatrick, BT39 0AT",
+    "lat": 54.69994,
+    "lng": -6.10547,
+    "town": "Templepatrick"
+  },
+  {
+    "id": 32,
+    "name": "Mauds Temptations",
+    "address": "352 Cregagh Road, Belfast, BT6 9EY",
+    "lat": 54.57201,
+    "lng": -5.89407,
+    "town": "Belfast"
+  },
+  {
+    "id": 33,
+    "name": "Mauds Whiteabbey",
+    "address": "Loughshore Courtyard, Jordanstown, Newtownabbey, BT37 0YA",
+    "lat": 54.67884,
+    "lng": -5.89060,
+    "town": "Newtownabbey"
+  },
+  {
+    "id": 34,
+    "name": "Mynt Banbridge",
+    "address": "4-5 Scarva Street Shopping Centre, Banbridge, BT32 3DA",
+    "lat": 54.34882,
+    "lng": -6.27069,
+    "town": "Banbridge"
+  },
+  {
+    "id": 35,
+    "name": "SPAR Brackenvale",
+    "address": "520 Saintfield Road, Belfast, BT8 8EU",
+    "lat": 54.53112,
+    "lng": -5.89520,
+    "town": "Belfast"
+  },
+  {
+    "id": 36,
+    "name": "SPAR Clough",
+    "address": "2 Main Street, Clough, Downpatrick, BT30 8RA",
+    "lat": 54.29249,
+    "lng": -5.83739,
+    "town": "Downpatrick"
+  },
+  {
+    "id": 37,
+    "name": "The Dairy",
+    "address": "5 Waterfall Road, Larne, BT40 3LE",
+    "lat": 54.80538,
+    "lng": -5.83198,
+    "town": "Larne"
+  },
+  {
+    "id": 38,
+    "name": "The Kandy Shop Randalstown",
+    "address": "86 Main Street, Randalstown, BT41 3BB",
+    "lat": 54.75034,
+    "lng": -6.32226,
+    "town": "Randalstown"
+  },
+    {
+    "id": 39,
+    "name": "Yumo Rushmere Shopping Centre",
+    "address": "4 Central Way, Craigavon, BT64 1AA",
+    "lat": 54.45240,
+    "lng": -6.39186,
+    "town": "Craigavon"
+  }
+]
