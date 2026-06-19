@@ -1,122 +1,71 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useState } from "react";
+import { Map } from "./components/Map";
+import { FilterBar } from "./components/FilterBar";
+import { ShopList } from "./components/ShopList";
+import { useVisited } from "./hooks/useVisited";
+import { useUserLocation } from "./hooks/useUserLocation";
+import { getDistanceMiles } from "./utils/distance";
+import shops from "./data/shops.json";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const { visited, toggleVisited } = useVisited();
+  const { location: userLocation } = useUserLocation();
+  const [filter, setFilter] = useState("all");
+  const [distanceFilter, setDistanceFilter] = useState(null);
+  const [listOpen, setListOpen] = useState(false);
+
+  const filteredShops = shops.filter((shop) => {
+    if (filter === "visited" && !visited.has(shop.id)) return false;
+    if (filter === "unvisited" && visited.has(shop.id)) return false;
+    if (distanceFilter != null && userLocation) {
+      const d = getDistanceMiles(userLocation.lat, userLocation.lng, shop.lat, shop.lng);
+      if (d > distanceFilter) return false;
+    }
+    return true;
+  });
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div style={{ position: "relative", width: "100vw", height: "100dvh" }}>
 
-      <div className="ticks"></div>
+      <FilterBar
+        filter={filter}
+        onFilterChange={setFilter}
+        distanceFilter={distanceFilter}
+        onDistanceChange={setDistanceFilter}
+        shops={shops}
+        visited={visited}
+        userLocation={userLocation}
+      />
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      <Map
+        shops={filteredShops}
+        visited={visited}
+        onToggleVisited={toggleVisited}
+        userLocation={userLocation}
+      />
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      {/* List drawer toggle button */}
+      <button
+        onClick={() => setListOpen(true)}
+        style={{
+          position: "absolute", bottom: 24, right: 16, zIndex: 1000,
+          background: "#3b82f6", color: "white", border: "none",
+          borderRadius: 16, padding: "12px 20px",
+          fontWeight: 700, fontSize: 14, cursor: "pointer",
+          boxShadow: "0 4px 12px rgba(59,130,246,0.4)",
+        }}
+      >
+        ☰ All Shops
+      </button>
+
+      <ShopList
+        shops={filteredShops}
+        visited={visited}
+        onToggleVisited={toggleVisited}
+        userLocation={userLocation}
+        isOpen={listOpen}
+        onClose={() => setListOpen(false)}
+      />
+    </div>
+  );
 }
-
-export default App
