@@ -1,4 +1,5 @@
-import { MapContainer, TileLayer, Circle } from "react-leaflet";
+import { useEffect } from "react";
+import { MapContainer, TileLayer, Circle, useMap } from "react-leaflet";
 import { ShopMarker } from "./ShopMarker";
 import { getDistanceMiles } from "../utils/distance";
 import "leaflet/dist/leaflet.css";
@@ -6,11 +7,21 @@ import "leaflet/dist/leaflet.css";
 const NI_CENTRE = [54.7877, -6.4923];
 const DEFAULT_ZOOM = 9;
 const NI_BOUNDS = [
-  [53.9, -8.4],
-  [55.4, -5.3],
+  [53.7, -8.6],
+  [55.9, -4.8],
 ];
 
-export function Map({ shops, visited, onToggleVisited, userLocation }) {
+function ViewPadder({ topPadding }) {
+  const map = useMap();
+  useEffect(() => {
+    if (topPadding > 0) {
+      map.panBy([0, topPadding / 2], { animate: false });
+    }
+  }, []);
+  return null;
+}
+
+export function Map({ shops, visited, onToggleVisited, userLocation, topPadding = 0 }) {
   return (
     <MapContainer
       center={NI_CENTRE}
@@ -25,6 +36,7 @@ export function Map({ shops, visited, onToggleVisited, userLocation }) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
+      <ViewPadder topPadding={topPadding} />
 
       {/* User location dot */}
       {userLocation && (

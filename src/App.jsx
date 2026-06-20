@@ -54,6 +54,7 @@ export default function App() {
           visited={visited}
           onToggleVisited={toggleVisited}
           userLocation={userLocation}
+          topPadding={awningHeight + 120}
         />
       </div>
 
