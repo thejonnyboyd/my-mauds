@@ -5,12 +5,19 @@ import "leaflet/dist/leaflet.css";
 
 const NI_CENTRE = [54.7877, -6.4923];
 const DEFAULT_ZOOM = 9;
+const NI_BOUNDS = [
+  [53.9, -8.4],
+  [55.4, -5.3],
+];
 
 export function Map({ shops, visited, onToggleVisited, userLocation }) {
   return (
     <MapContainer
       center={NI_CENTRE}
       zoom={DEFAULT_ZOOM}
+      minZoom={8}
+      maxBounds={NI_BOUNDS}
+      maxBoundsViscosity={1.0}
       style={{ width: "100%", height: "100%" }}
       zoomControl={false}
     >
