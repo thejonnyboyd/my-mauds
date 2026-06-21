@@ -21,7 +21,7 @@ function ViewPadder({ topPadding }) {
   return null;
 }
 
-export function Map({ shops, visited, onToggleVisited, userLocation, topPadding = 0 }) {
+export function Map({ shops, visited, onToggleVisited, getLastVisit, userLocation, topPadding = 0 }) {
   return (
     <MapContainer
       center={NI_CENTRE}
@@ -58,6 +58,7 @@ export function Map({ shops, visited, onToggleVisited, userLocation, topPadding 
             isVisited={visited.has(shop.id)}
             onToggleVisited={onToggleVisited}
             distanceMiles={dist}
+            lastVisit={getLastVisit ? getLastVisit(shop.id) : null}
           />
         );
       })}

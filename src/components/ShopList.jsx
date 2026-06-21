@@ -1,6 +1,7 @@
 import { getDistanceMiles } from "../utils/distance";
+import { formatVisitDate } from "../hooks/useVisitLog";
 
-export function ShopList({ shops, visited, onToggleVisited, userLocation, isOpen, onClose }) {
+export function ShopList({ shops, visited, onToggleVisited, getLastVisit, userLocation, isOpen, onClose }) {
   return (
     <>
       {/* Backdrop */}
@@ -47,6 +48,7 @@ export function ShopList({ shops, visited, onToggleVisited, userLocation, isOpen
             const dist = userLocation
               ? getDistanceMiles(userLocation.lat, userLocation.lng, shop.lat, shop.lng)
               : null;
+            const lastVisit = getLastVisit ? getLastVisit(shop.id) : null;
 
             return (
               <div key={shop.id} style={{
@@ -62,6 +64,11 @@ export function ShopList({ shops, visited, onToggleVisited, userLocation, isOpen
                     <p style={{ fontSize: 12, color: "#9ca3af" }}>
                       {shop.town}{dist != null ? ` · ${dist.toFixed(1)} mi` : ""}
                     </p>
+                    {lastVisit && (
+                      <p style={{ fontSize: 11, color: "#9ca3af", marginTop: 2 }}>
+                        Last visited {formatVisitDate(lastVisit)}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <button onClick={() => onToggleVisited(shop.id)} style={{

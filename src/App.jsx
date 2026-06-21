@@ -3,6 +3,7 @@ import { Map } from "./components/Map";
 import { FilterBar } from "./components/FilterBar";
 import { ShopList } from "./components/ShopList";
 import { useVisited } from "./hooks/useVisited";
+import { useVisitLog } from "./hooks/useVisitLog";
 import { useUserLocation } from "./hooks/useUserLocation";
 import { getDistanceMiles } from "./utils/distance";
 import { theme } from "./theme";
@@ -10,8 +11,14 @@ import logo from "./assets/mymauds-logo.png";
 import shops from "./data/shops.json";
 
 export default function App() {
-  const { visited, toggleVisited } = useVisited();
+  const { visited, toggleVisited, isVisited } = useVisited();
+  const { logVisit, getLastVisit } = useVisitLog();
   const { location: userLocation } = useUserLocation();
+
+  const handleToggleVisited = (shopId) => {
+    if (!isVisited(shopId)) logVisit(shopId);
+    toggleVisited(shopId);
+  };
   const [filter, setFilter] = useState("all");
   const [distanceFilter, setDistanceFilter] = useState(null);
   const [listOpen, setListOpen] = useState(false);
@@ -52,7 +59,8 @@ export default function App() {
         <Map
           shops={filteredShops}
           visited={visited}
-          onToggleVisited={toggleVisited}
+          onToggleVisited={handleToggleVisited}
+          getLastVisit={getLastVisit}
           userLocation={userLocation}
           topPadding={awningHeight + 120}
         />
@@ -109,7 +117,8 @@ export default function App() {
       <ShopList
         shops={filteredShops}
         visited={visited}
-        onToggleVisited={toggleVisited}
+        onToggleVisited={handleToggleVisited}
+        getLastVisit={getLastVisit}
         userLocation={userLocation}
         isOpen={listOpen}
         onClose={() => setListOpen(false)}

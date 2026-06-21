@@ -1,6 +1,7 @@
 import { Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import { theme } from "../theme";
+import { formatVisitDate } from "../hooks/useVisitLog";
 
 function createIceCreamIcon(isVisited) {
   const bg = isVisited ? theme.visited : theme.unvisited;
@@ -25,7 +26,7 @@ function createIceCreamIcon(isVisited) {
   });
 }
 
-export function ShopMarker({ shop, isVisited, onToggleVisited, distanceMiles }) {
+export function ShopMarker({ shop, isVisited, onToggleVisited, distanceMiles, lastVisit }) {
   return (
     <Marker position={[shop.lat, shop.lng]} icon={createIceCreamIcon(isVisited)}>
       <Popup>
@@ -42,8 +43,13 @@ export function ShopMarker({ shop, isVisited, onToggleVisited, distanceMiles }) 
             </p>
           )}
           {isVisited && (
-            <p style={{ fontSize: 12, color: theme.teal, marginBottom: 8, fontWeight: 600 }}>
+            <p style={{ fontSize: 12, color: theme.teal, marginBottom: 4, fontWeight: 600 }}>
               You've been here!
+            </p>
+          )}
+          {lastVisit && (
+            <p style={{ fontSize: 11, color: theme.brown, marginBottom: 8 }}>
+              Last visited {formatVisitDate(lastVisit)}
             </p>
           )}
           <button
