@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Map } from "./components/Map";
 import { FilterBar } from "./components/FilterBar";
 import { ShopList } from "./components/ShopList";
+import { StampCard } from "./components/StampCard";
 import { useVisited } from "./hooks/useVisited";
 import { useVisitLog } from "./hooks/useVisitLog";
 import { useUserLocation } from "./hooks/useUserLocation";
@@ -22,6 +23,7 @@ export default function App() {
   const [filter, setFilter] = useState("all");
   const [distanceFilter, setDistanceFilter] = useState(null);
   const [listOpen, setListOpen] = useState(false);
+  const [stampOpen, setStampOpen] = useState(false);
 
   const awningRef = useRef(null);
   const [awningHeight, setAwningHeight] = useState(100);
@@ -99,6 +101,21 @@ export default function App() {
         topOffset={awningHeight + 12}
       />
 
+      {/* My Stamps button */}
+      <button
+        onClick={() => setStampOpen(true)}
+        style={{
+          position: "absolute", bottom: 24, left: 16, zIndex: 1000,
+          background: theme.coral, color: "white", border: "none",
+          borderRadius: 14, padding: "12px 20px",
+          fontWeight: 700, fontSize: 14, cursor: "pointer",
+          boxShadow: "0 4px 16px rgba(231,111,81,0.35)",
+          letterSpacing: "-0.2px",
+        }}
+      >
+        My Stamps
+      </button>
+
       {/* All Shops button */}
       <button
         onClick={() => setListOpen(true)}
@@ -113,6 +130,12 @@ export default function App() {
       >
         All Shops
       </button>
+
+      <StampCard
+        visited={visited}
+        isOpen={stampOpen}
+        onClose={() => setStampOpen(false)}
+      />
 
       <ShopList
         shops={filteredShops}
