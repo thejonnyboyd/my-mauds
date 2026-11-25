@@ -29,7 +29,7 @@
     "address": "12 Victoria Avenue, Whitehead, BT38 9QF",
     "lat": 54.75226,
     "lng": -5.7105104,
-    "town": "Belfast"
+    "town": "Whitehead"
   },
   {
     "id": 5,
@@ -133,13 +133,13 @@
     "address": "18 High Street, Donaghadee, BT21 0AA",
     "lat": 54.64214,
     "lng": -5.53685,
-    "town": "Donaghdee"
+    "town": "Donaghadee"
   },
   {
     "id": 18,
     "name": "Mauds Enniskillen",
     "address": "26 Shore Road, Enniskillen, BT74 4EF",
-    "lat": 54.34370,
+    "lat": 54.3437,
     "lng": -7.63697,
     "town": "Enniskillen"
   },
@@ -164,7 +164,7 @@
     "name": "Mauds Kilkeel",
     "address": "13 Greencastle Street, Kilkeel, BT34 4BH",
     "lat": 54.06264,
-    "lng": -6.00710,
+    "lng": -6.0071,
     "town": "Kilkeel"
   },
   {
@@ -212,7 +212,7 @@
     "name": "Mauds Ormeau",
     "address": "260 Ormeau Road, Belfast, BT7 2GB",
     "lat": 54.57761,
-    "lng": -5.91830,
+    "lng": -5.9183,
     "town": "Belfast"
   },
   {
@@ -225,11 +225,11 @@
   },
   {
     "id": 29,
-    "name": "Mauds Portstewert",
+    "name": "Mauds Portstewart",
     "address": "73 The Promenade, Portstewart, BT55 7AF",
     "lat": 55.18363,
     "lng": -6.71827,
-    "town": "Portstewert"
+    "town": "Portstewart"
   },
   {
     "id": 30,
@@ -260,7 +260,7 @@
     "name": "Mauds Whiteabbey",
     "address": "Loughshore Courtyard, Jordanstown, Newtownabbey, BT37 0YA",
     "lat": 54.67884,
-    "lng": -5.89060,
+    "lng": -5.8906,
     "town": "Newtownabbey"
   },
   {
@@ -276,7 +276,7 @@
     "name": "SPAR Brackenvale",
     "address": "520 Saintfield Road, Belfast, BT8 8EU",
     "lat": 54.53112,
-    "lng": -5.89520,
+    "lng": -5.8952,
     "town": "Belfast"
   },
   {
@@ -303,11 +303,11 @@
     "lng": -6.32226,
     "town": "Randalstown"
   },
-    {
+  {
     "id": 39,
     "name": "Yumo Rushmere Shopping Centre",
     "address": "4 Central Way, Craigavon, BT64 1AA",
-    "lat": 54.45240,
+    "lat": 54.4524,
     "lng": -6.39186,
     "town": "Craigavon"
   }
