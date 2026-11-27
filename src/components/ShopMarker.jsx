@@ -26,7 +26,8 @@ function createIceCreamIcon(isVisited) {
   });
 }
 
-export function ShopMarker({ shop, isVisited, onToggleVisited, distanceMiles, lastVisit }) {
+export function ShopMarker({ shop, visitCount, onLogVisit, onUndoVisit, distanceMiles, lastVisit }) {
+  const isVisited = visitCount > 0;
   return (
     <Marker position={[shop.lat, shop.lng]} icon={createIceCreamIcon(isVisited)}>
       <Popup>
@@ -44,7 +45,7 @@ export function ShopMarker({ shop, isVisited, onToggleVisited, distanceMiles, la
           )}
           {isVisited && (
             <p style={{ fontSize: 12, color: theme.teal, marginBottom: 4, fontWeight: 600 }}>
-              You've been here!
+              {visitCount} stamp{visitCount === 1 ? "" : "s"} here
             </p>
           )}
           {lastVisit && (
@@ -53,17 +54,28 @@ export function ShopMarker({ shop, isVisited, onToggleVisited, distanceMiles, la
             </p>
           )}
           <button
-            onClick={() => onToggleVisited(shop.id)}
+            onClick={() => onLogVisit(shop.id)}
             style={{
               width: "100%", padding: "8px 0", borderRadius: 10,
               border: "none", cursor: "pointer", fontWeight: 700, fontSize: 13,
-              background: isVisited ? "#fef2f2" : "#eafaf1",
-              color: isVisited ? theme.coral : theme.teal,
+              background: "#eafaf1", color: theme.teal,
               transition: "opacity 0.15s",
             }}
           >
-            {isVisited ? "Remove visit" : "Mark as visited"}
+            {isVisited ? "Add another stamp" : "Add a stamp"}
           </button>
+          {isVisited && (
+            <button
+              onClick={() => onUndoVisit(shop.id)}
+              style={{
+                width: "100%", marginTop: 6, padding: "4px 0",
+                border: "none", background: "transparent", cursor: "pointer",
+                fontSize: 11, fontWeight: 600, color: "#9ca3af",
+              }}
+            >
+              Undo last stamp
+            </button>
+          )}
         </div>
       </Popup>
     </Marker>

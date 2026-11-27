@@ -3,7 +3,6 @@ import { Map } from "./components/Map";
 import { FilterBar } from "./components/FilterBar";
 import { ShopList } from "./components/ShopList";
 import { StampCard } from "./components/StampCard";
-import { useVisited } from "./hooks/useVisited";
 import { useVisitLog } from "./hooks/useVisitLog";
 import { useUserLocation } from "./hooks/useUserLocation";
 import { getDistanceMiles } from "./utils/distance";
@@ -12,13 +11,13 @@ import logo from "./assets/mymauds-logo.png";
 import shops from "./data/shops.json";
 
 export default function App() {
-  const { visited, toggleVisited, isVisited } = useVisited();
-  const { logVisit, getLastVisit } = useVisitLog();
+  const { visited, totalStamps, logVisit, undoLastVisit, getVisitCount, getLastVisit } = useVisitLog();
   const { location: userLocation } = useUserLocation();
 
-  const handleToggleVisited = (shopId) => {
-    if (!isVisited(shopId)) logVisit(shopId);
-    toggleVisited(shopId);
+  const handleUndoVisit = (shopId) => {
+    if (window.confirm("Remove the most recent stamp for this shop?")) {
+      undoLastVisit(shopId);
+    }
   };
   const [filter, setFilter] = useState("all");
   const [distanceFilter, setDistanceFilter] = useState(null);
@@ -60,8 +59,9 @@ export default function App() {
       }}>
         <Map
           shops={filteredShops}
-          visited={visited}
-          onToggleVisited={handleToggleVisited}
+          onLogVisit={logVisit}
+          onUndoVisit={handleUndoVisit}
+          getVisitCount={getVisitCount}
           getLastVisit={getLastVisit}
           userLocation={userLocation}
           topPadding={awningHeight + 120}
@@ -132,15 +132,16 @@ export default function App() {
       </button>
 
       <StampCard
-        visited={visited}
+        totalStamps={totalStamps}
         isOpen={stampOpen}
         onClose={() => setStampOpen(false)}
       />
 
       <ShopList
         shops={filteredShops}
-        visited={visited}
-        onToggleVisited={handleToggleVisited}
+        onLogVisit={logVisit}
+        onUndoVisit={handleUndoVisit}
+        getVisitCount={getVisitCount}
         getLastVisit={getLastVisit}
         userLocation={userLocation}
         isOpen={listOpen}

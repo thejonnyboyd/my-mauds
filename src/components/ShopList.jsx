@@ -1,7 +1,7 @@
 import { getDistanceMiles } from "../utils/distance";
 import { formatVisitDate } from "../hooks/useVisitLog";
 
-export function ShopList({ shops, visited, onToggleVisited, getLastVisit, userLocation, isOpen, onClose }) {
+export function ShopList({ shops, onLogVisit, onUndoVisit, getVisitCount, getLastVisit, userLocation, isOpen, onClose }) {
   return (
     <>
       {/* Backdrop */}
@@ -44,11 +44,12 @@ export function ShopList({ shops, visited, onToggleVisited, getLastVisit, userLo
         {/* List */}
         <div style={{ overflowY: "auto", padding: "0 16px 24px" }}>
           {shops.map((shop) => {
-            const isVisited = visited.has(shop.id);
+            const visitCount = getVisitCount(shop.id);
+            const isVisited = visitCount > 0;
             const dist = userLocation
               ? getDistanceMiles(userLocation.lat, userLocation.lng, shop.lat, shop.lng)
               : null;
-            const lastVisit = getLastVisit ? getLastVisit(shop.id) : null;
+            const lastVisit = getLastVisit(shop.id);
 
             return (
               <div key={shop.id} style={{
@@ -64,22 +65,33 @@ export function ShopList({ shops, visited, onToggleVisited, getLastVisit, userLo
                     <p style={{ fontSize: 12, color: "#9ca3af" }}>
                       {shop.town}{dist != null ? ` · ${dist.toFixed(1)} mi` : ""}
                     </p>
-                    {lastVisit && (
+                    {isVisited && (
                       <p style={{ fontSize: 11, color: "#9ca3af", marginTop: 2 }}>
-                        Last visited {formatVisitDate(lastVisit)}
+                        {visitCount} stamp{visitCount === 1 ? "" : "s"}
+                        {lastVisit ? ` · last ${formatVisitDate(lastVisit)}` : ""}
                       </p>
                     )}
                   </div>
                 </div>
-                <button onClick={() => onToggleVisited(shop.id)} style={{
-                  padding: "5px 12px", borderRadius: 8, border: "none",
-                  cursor: "pointer", fontSize: 12, fontWeight: 600,
-                  background: isVisited ? "#fee2e2" : "#dcfce7",
-                  color: isVisited ? "#dc2626" : "#16a34a",
-                  whiteSpace: "nowrap",
-                }}>
-                  {isVisited ? "Remove" : "Visited"}
-                </button>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 4 }}>
+                  <button onClick={() => onLogVisit(shop.id)} style={{
+                    padding: "5px 12px", borderRadius: 8, border: "none",
+                    cursor: "pointer", fontSize: 12, fontWeight: 600,
+                    background: "#dcfce7", color: "#16a34a",
+                    whiteSpace: "nowrap",
+                  }}>
+                    + Stamp
+                  </button>
+                  {isVisited && (
+                    <button onClick={() => onUndoVisit(shop.id)} style={{
+                      padding: 0, border: "none", background: "transparent",
+                      cursor: "pointer", fontSize: 11, fontWeight: 600,
+                      color: "#9ca3af", whiteSpace: "nowrap",
+                    }}>
+                      Undo
+                    </button>
+                  )}
+                </div>
               </div>
             );
           })}

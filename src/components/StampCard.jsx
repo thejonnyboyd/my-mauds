@@ -48,11 +48,10 @@ function ConfettiBurst() {
   );
 }
 
-export function StampCard({ visited, isOpen, onClose }) {
-  const totalVisited = visited.size;
-  const cardsCompleted = Math.floor(totalVisited / STAMPS_PER_CARD);
-  const stampsOnCurrentCard = totalVisited % STAMPS_PER_CARD;
-  const isJustCompleted = stampsOnCurrentCard === 0 && totalVisited > 0;
+export function StampCard({ totalStamps, isOpen, onClose }) {
+  const cardsCompleted = Math.floor(totalStamps / STAMPS_PER_CARD);
+  const stampsOnCurrentCard = totalStamps % STAMPS_PER_CARD;
+  const isJustCompleted = stampsOnCurrentCard === 0 && totalStamps > 0;
   const displayStamps = isJustCompleted ? STAMPS_PER_CARD : stampsOnCurrentCard;
   const remaining = STAMPS_PER_CARD - displayStamps;
 
@@ -122,7 +121,7 @@ export function StampCard({ visited, isOpen, onClose }) {
                 Card complete!
               </p>
               <p style={{ fontSize: 13, color: theme.brown }}>
-                You've visited {totalVisited} Maud's shops!
+                You've collected {totalStamps} stamps!
               </p>
             </div>
           )}
@@ -163,16 +162,16 @@ export function StampCard({ visited, isOpen, onClose }) {
           }}>
             <div style={{ textAlign: "center" }}>
               <p style={{ fontSize: 24, fontWeight: 800, color: theme.coral, lineHeight: 1 }}>
-                {totalVisited}
+                {totalStamps}
               </p>
               <p style={{ fontSize: 11, color: "#9ca3af", fontWeight: 600, marginTop: 4 }}>
-                total visits
+                total stamps
               </p>
             </div>
             <div style={{ width: 1, background: "#e5e7eb" }} />
             <div style={{ textAlign: "center" }}>
               <p style={{ fontSize: 24, fontWeight: 800, color: theme.teal, lineHeight: 1 }}>
-                {isJustCompleted ? "10 / 10" : `${displayStamps} / 10`}
+                {displayStamps} / {STAMPS_PER_CARD}
               </p>
               <p style={{ fontSize: 11, color: "#9ca3af", fontWeight: 600, marginTop: 4 }}>
                 this card
@@ -181,7 +180,7 @@ export function StampCard({ visited, isOpen, onClose }) {
             <div style={{ width: 1, background: "#e5e7eb" }} />
             <div style={{ textAlign: "center" }}>
               <p style={{ fontSize: 24, fontWeight: 800, color: theme.amber, lineHeight: 1 }}>
-                {isJustCompleted ? "0" : remaining}
+                {remaining}
               </p>
               <p style={{ fontSize: 11, color: "#9ca3af", fontWeight: 600, marginTop: 4 }}>
                 until next card
